@@ -407,3 +407,355 @@
   .btn-icon {
     margin-right: 8px;
   }
+
+  /* 3-Column Layout for Admin Panel */
+.admin-columns {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  
+  .left-column, .center-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Recent Transactions */
+  .transactions-list {
+    padding: 16px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .transaction-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .transaction-item:hover {
+    background-color: #f8fafc;
+    border-color: #d1d5db;
+  }
+  
+  .transaction-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .transaction-details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  
+  .user-name {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.875rem;
+  }
+  
+  .amount {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  
+  .description {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .timestamp {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  .revenue-summary {
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .revenue-label {
+    font-weight: 500;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  .revenue-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+  
+  /* Quick Stats in Center Column */
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Right Column Styles */
+  .quick-search {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .quick-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.875rem;
+  }
+  
+  .quick-search input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .user-count {
+    font-size: 0.75rem;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+  
+  .users-list {
+    padding: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .user-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .user-list-item:hover {
+    background: #f8fafc;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+  }
+  
+  .avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+  
+  .user-list-details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .user-list-details .font-semibold {
+    font-size: 0.875rem;
+    color: #1f2937;
+  }
+  
+  .balance {
+    font-weight: 700;
+    color: #10b981;
+    font-size: 0.875rem;
+  }
+  
+  .phone-sm {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-family: monospace;
+  }
+  
+  .rfid-sm {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    font-family: monospace;
+  }
+  
+  /* Quick Actions */
+  .quick-actions {
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #6b7280;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  
+  .action-btn:hover {
+    background: #f8fafc;
+    border-color: #d1d5db;
+    color: #4f46e5;
+  }
+  
+  .action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Activity Stats */
+  .activity-stats {
+    padding: 16px;
+    border-top: 1px solid #e5e7eb;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .activity-item {
+    text-align: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .activity-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+  }
+  
+  .activity-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  /* Text Link */
+  .text-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #4f46e5;
+    font-size: 0.75rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .text-link:hover {
+    background: rgba(79, 70, 229, 0.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .admin-columns {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .right-column {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .admin-columns {
+      grid-template-columns: 1fr;
+    }
+    
+    .right-column {
+      grid-column: span 1;
+    }
+    
+    .quick-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Button sizes */
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+
+  
