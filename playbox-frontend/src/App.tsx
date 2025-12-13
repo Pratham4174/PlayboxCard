@@ -229,7 +229,7 @@ export default function App() {
       // Get admin name from adminInfo or localStorage
       const adminName = adminInfo?.username || 
                        deductorName || 
-                       localStorage.getItem('adminUsername') || 
+                       localStorage.getItem('admin') || 
                        'Unknown Admin';
       
       // Pass adminName as the third parameter

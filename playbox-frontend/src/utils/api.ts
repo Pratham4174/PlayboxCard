@@ -194,7 +194,7 @@ export const transactionApi = {
         type: item.type, // Should be 'ADD' | 'DEDUCT' | 'NEW_USER'
         amount: item.amount || 0,
         description: item.description,
-        timestamp: item.timestamp || item.createdAt,
+        timestamp: item.instant || item.timestamp || item.createdAt,
         adminName: item.adminName,
         previousBalance: item.previousBalance,
         balanceAfter: item.balanceAfter
