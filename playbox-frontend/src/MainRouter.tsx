@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import App from "./App";
 
 
@@ -8,7 +8,7 @@ import { isAdminLoggedIn } from "./utils/auth";
 
 export default function MainRouter() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Login Page */}
         <Route
@@ -38,6 +38,6 @@ export default function MainRouter() {
           element={<Navigate to="/login" replace />}
         />
       </Routes>
-    </BrowserRouter>
+      </HashRouter>
   );
 }
