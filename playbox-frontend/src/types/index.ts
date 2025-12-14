@@ -29,7 +29,7 @@ export interface ScanResponse {
   export interface Transaction {
     id: number;
     userId: number;
-    userName: string;
+    userName: string | null;
     type: 'ADD' | 'DEDUCT' | 'NEW_USER';
     amount: number;
     description?: string; // Add this line - make it optional
@@ -69,4 +69,37 @@ export interface PageResponse<T> {
     mostActiveStaff: StatItem[];
     mostActiveUsers: StatItem[];
   }
+
+  export interface User {
+    id: number;
+    name: string;
+    // Remove userId field since your backend doesn't have it
+    phone?: string;
+    email?: string;
+    registrationDate: string; // Your backend returns string
+    lastVisit?: string;
+    totalVisits: number;
+    totalRecharge: number;
+    totalDeduction: number;
+    currentBalance: number;
+    status: 'active' | 'inactive';
+  }
+  
+  export interface UserDetails extends User {
+    recentTransactions: Transaction[]; // Use your TransactionDTO
+    rechargeHistory: { date: string; amount: number }[];
+    avgVisitAmount: number;
+    lastRechargeDate?: string;
+  }
+  
+  export interface UserStats {
+    totalUsers: number;
+    activeUsers: number;
+    totalRecharge: number;
+    totalDeduction: number;
+    avgBalance: number;
+    newUsersToday: number;
+  }
+  
+
   

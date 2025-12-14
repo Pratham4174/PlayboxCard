@@ -15,6 +15,7 @@ import {
     Users
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TransactionFilters from "../components/transactions/TransactionFilters";
 import TransactionTable from "../components/transactions/TransactionTable";
 import "../css/OwnerDashboard.css";
@@ -45,7 +46,7 @@ export default function OwnerDashboard() {
   });
   const [data, setData] = useState<DailyRevenueDashboard | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     dashboardApi.getTodayRevenue()
@@ -327,6 +328,13 @@ const handleFilter = useCallback(async (filters: FilterState) => {
         
         
         <div className="header-actions">
+        <button 
+    onClick={() => navigate('/users')}
+    className="btn btn-outline"
+  >
+    <Users size={18} />
+    View All Users
+  </button>
           <button 
             onClick={loadTransactions}
             disabled={isLoading}

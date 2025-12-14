@@ -3,13 +3,15 @@ import App from "./App";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import OwnerDashboard from "./pages/OwnerDashboard";
+
+import UserDetailsPage from "./pages/UserDetailsPage";
+import UsersListPage from "./pages/UsersListPage";
 import { isAdminLoggedIn } from "./utils/auth";
 
 export default function MainRouter() {
   return (
     <HashRouter>
       <Routes>
-
         {/* Login Page */}
         <Route
           path="/login"
@@ -42,9 +44,28 @@ export default function MainRouter() {
           }
         />
 
-        {/* Default */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {/* All Users List Page */}
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <UsersListPage />
+            </ProtectedRoute>
+          }
+        />
 
+        {/* User Details Page */}
+        <Route
+          path="/users/:userId"
+          element={
+            <ProtectedRoute>
+              <UserDetailsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Default - Redirect to login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </HashRouter>
   );

@@ -1,7 +1,7 @@
-import type { DailyRevenueDashboard, PlayBoxUser, ScanResponse, Transaction } from "../types";
+import type { DailyRevenueDashboard, PlayBoxUser, ScanResponse, Transaction, User, UserDetails, UserStats } from "../types";
 
-// const BACKEND_URL = "http://localhost:8080/playbox";
-const BACKEND_URL = "https://playboxcardbackend-production.up.railway.app/playbox";
+const BACKEND_URL = "http://localhost:8080/playbox";
+// const BACKEND_URL = "https://playboxcardbackend-production.up.railway.app/playbox";
 
 export const api = {
   // ====================
@@ -258,4 +258,72 @@ export const transactionApi = {
   
       return await res.json();
     }
+  };
+
+  export const userApi = {
+    // Get all users summary
+    getAllUsers: async (): Promise<User[]> => {
+      const response = await fetch(`${BACKEND_URL}/api/users/all-summary`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch users: ${response.status}`);
+      }
+      const data = await response.json();
+      
+      // Map backend fields to frontend User type
+      return data.map((item: any) => ({
+        id: item.id,
+        name: item.name,
+        phone: item.phone || '',
+        email: item.email || '',
+        registrationDate: item.registrationDate,
+        lastVisit: item.lastVisit,
+        totalVisits: item.totalVisits || 0,
+        totalRecharge: item.totalRecharge || 0,
+        totalDeduction: item.totalDeduction || 0,
+        currentBalance: item.currentBalance || 0,
+        status: item.status || 'inactive'
+      }));
+    },
+  
+    // Get user details by ID
+    getUserDetails: async (userId: number): Promise<UserDetails> => {
+      const response = await fetch(`${BACKEND_URL}/api/users/${userId}/details`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch user details: ${response.status}`);
+      }
+      return response.json(); // Backend DTO matches frontend UserDetails
+    },
+  
+    // Get user stats
+    getUserStats: async (): Promise<UserStats> => {
+      const response = await fetch(`${BACKEND_URL}/api/users/stats`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch user stats: ${response.status}`);
+      }
+      return response.json(); // Direct mapping
+    },
+  
+    // Search users
+    searchUsers: async (query: string): Promise<User[]> => {
+      const response = await fetch(`${BACKEND_URL}/api/users/search?q=${encodeURIComponent(query)}`);
+      if (!response.ok) {
+        throw new Error(`Failed to search users: ${response.status}`);
+      }
+      const data = await response.json();
+      
+      // Map backend fields to frontend User type
+      return data.map((item: any) => ({
+        id: item.id,
+        name: item.name,
+        phone: item.phone || '',
+        email: item.email || '',
+        registrationDate: item.registrationDate,
+        lastVisit: item.lastVisit,
+        totalVisits: item.totalVisits || 0,
+        totalRecharge: item.totalRecharge || 0,
+        totalDeduction: item.totalDeduction || 0,
+        currentBalance: item.currentBalance || 0,
+        status: item.status || 'inactive'
+      }));
+    },
   };
